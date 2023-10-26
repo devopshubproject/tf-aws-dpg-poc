@@ -1,4 +1,7 @@
-# Create a load balancer (in a public subnet)
+##################################################
+# LB in Pub subnet
+##################################################
+
 resource "aws_lb" "web_lb" {
   name               = "web-lb"
   internal           = false
@@ -8,7 +11,10 @@ resource "aws_lb" "web_lb" {
   tags     = local.common_tags
 }
 
-# Create a target group
+##################################################
+# LB Target Group
+##################################################
+
 resource "aws_alb_target_group" "tg" {
   name     = "web-lb-tg"
   port     = 80
@@ -25,13 +31,20 @@ resource "aws_alb_target_group" "tg" {
   }
 }
 
+##################################################
+# AutoScaling Attachment
+##################################################
+
 resource "aws_autoscaling_attachment" "asg_ass" {
   autoscaling_group_name = aws_autoscaling_group.asg.id
   lb_target_group_arn = aws_alb_target_group.tg.arn
   
 }
 
-# Create a listener for the load balancer
+##################################################
+# LB Listener
+##################################################
+
 resource "aws_lb_listener" "web_lb_listener" {
   load_balancer_arn = aws_lb.web_lb.arn
   port             = 80

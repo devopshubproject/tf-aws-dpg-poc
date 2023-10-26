@@ -1,3 +1,7 @@
+##################################################
+# Autoscaling Group
+##################################################
+
 resource "aws_autoscaling_group" "asg" {
   name_prefix          = "web-"
   launch_configuration = aws_launch_configuration.ec2_launch.name

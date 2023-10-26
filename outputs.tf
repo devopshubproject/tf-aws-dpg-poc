@@ -1,4 +1,7 @@
-# Output the public IPs of the instances for convenience
+##################################################
+# Outputs
+##################################################
+
 output "pip" {
   value = aws_launch_configuration.ec2_launch.associate_public_ip_address
 }

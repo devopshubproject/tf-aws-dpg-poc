@@ -1,5 +1,3 @@
-# main.tf
-
 ##################################################
 # locals for tagging
 ##################################################
@@ -12,6 +10,10 @@ locals {
     Application = var.app_name
   }
 }
+
+##################################################
+# launch Config
+##################################################
 
 resource "aws_launch_configuration" "ec2_launch" {
   name_prefix          = "poc-web-"

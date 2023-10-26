@@ -1,3 +1,6 @@
+##################################################
+# IAM Policy
+##################################################
 
 resource "aws_iam_policy" "iam_pol" {
   description = "EC2 IAM policy"
@@ -88,9 +91,10 @@ EOF
 }
 */
 
+##################################################
+# IAM Role
+##################################################
 
-
-# Create an IAM role
 resource "aws_iam_role" "ec2_role" {
   name = "ec2-assume-role"
 
@@ -110,13 +114,19 @@ resource "aws_iam_role" "ec2_role" {
 EOF
 }
 
-# Create an IAM instance profile
+##################################################
+# Instance Profile
+##################################################
+
 resource "aws_iam_instance_profile" "session_manager" {
   name = "ec2-session-manager"
   role = aws_iam_role.ec2_role.name
 }
 
-# Attach the IAM policy to the IAM role
+##################################################
+# Policy Attachment
+##################################################
+
 resource "aws_iam_policy_attachment" "ec2_pol_att" {
   name = "ec2-iam-pol-attach"
   policy_arn = aws_iam_policy.iam_pol.arn

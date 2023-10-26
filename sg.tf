@@ -1,3 +1,7 @@
+##################################################
+# Security Groups
+##################################################
+
 resource "aws_security_group" "sg" {
   name        = "poc-sg"
   description = "Security group for webserver instances"

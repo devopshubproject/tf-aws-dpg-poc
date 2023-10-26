@@ -1,4 +1,7 @@
-# Public subnet
+##################################################
+# Public Subnet
+##################################################
+
 resource "aws_subnet" "pub_subnet" {
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.pub_subnet_cidr
@@ -9,7 +12,10 @@ resource "aws_subnet" "pub_subnet" {
 }
 
 
-# Private Subnet
+##################################################
+# Public Subnet
+##################################################
+
 resource "aws_subnet" "pvt_subnet" {
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.pvt_subnet_cidr
