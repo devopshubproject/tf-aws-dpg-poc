@@ -6,7 +6,7 @@ resource "aws_lb" "web_lb" {
   name               = "web-lb"
   internal           = false
   load_balancer_type = "application"
-  subnets            = [aws_subnet.pub_subnet.id]
+  subnets            = aws_subnet.pub_subnet[*].id
   enable_deletion_protection = false
   tags     = local.common_tags
 }

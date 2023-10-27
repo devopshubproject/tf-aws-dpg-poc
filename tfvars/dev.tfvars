@@ -16,6 +16,7 @@ vpc_cidr           = "10.0.0.0/16"
 pub_subnet_cidr    = "10.0.1.0/24"
 pvt_subnet_cidr    = "10.0.2.0/24"
 availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
+allocation_id = ["eipalloc-1a2b3c", "eipalloc-4d5e6f"]
 
 # Load Balancer
 health_check_path = "/health"

@@ -1,7 +1,7 @@
 ###### General ######
 
 variable "environment" {
-  type        = "string"
+  type        = string
   description = "The environment name"
 }
 
@@ -56,6 +56,11 @@ variable "pvt_subnet_cidr" {
 }
 
 variable "availability_zones" {
+  description = "Availability zones"
+  type        = list(string)
+}
+
+variable "allocation_id" {
   description = "Availability zones"
   type        = list(string)
 }

@@ -22,7 +22,7 @@ resource "aws_route_table" "pvt_rt" {
 
 resource "aws_route" "pub_igw_r" {
     route_table_id = aws_route_table.pub_rt.id
-    nat_gateway_id = aws_nat_gateway.nat_gtw.id
+    gateway_id = aws_internet_gateway.igw.id
     destination_cidr_block = "0.0.0.0/0" 
   
 }
@@ -34,7 +34,7 @@ resource "aws_route" "pub_igw_r" {
 resource "aws_route" "pvt_nat_r" {
   route_table_id         = aws_route_table.pvt_rt.id
   destination_cidr_block = "0.0.0.0/0"
-  nat_gateway_id         = aws_nat_gateway.nat_gtw.id
+  nat_gateway_id         = aws_nat_gateway.nat_gtw[0].id
 }
 
 ##################################################
@@ -42,8 +42,9 @@ resource "aws_route" "pvt_nat_r" {
 ##################################################
 
 resource "aws_route_table_association" "pub_r_ass" {
+    count = length(aws_subnet.pub_subnet)
     route_table_id = aws_route_table.pub_rt.id
-    subnet_id = aws_subnet.pub_subnet.id
+    subnet_id = aws_subnet.pub_subnet[count.index].id
   
 }
 
@@ -52,7 +53,8 @@ resource "aws_route_table_association" "pub_r_ass" {
 ##################################################
 
 resource "aws_route_table_association" "pvt_r_ass" {
+    count = length(aws_subnet.pvt_subnet)
     route_table_id = aws_route_table.pvt_rt.id
-    subnet_id = aws_subnet.pvt_subnet.id
+    subnet_id = aws_subnet.pvt_subnet[count.index].id
   
 }

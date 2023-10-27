@@ -5,7 +5,7 @@
 resource "aws_autoscaling_group" "asg" {
   name_prefix          = "web-"
   launch_configuration = aws_launch_configuration.ec2_launch.name
-  vpc_zone_identifier  = [aws_subnet.pvt_subnet.id]
+  vpc_zone_identifier  = aws_subnet.pvt_subnet[*].id
   min_size             = 1
   max_size             = 2
   desired_capacity     = 1
