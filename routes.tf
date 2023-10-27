@@ -22,7 +22,7 @@ resource "aws_route_table" "pvt_rt" {
 
 resource "aws_route" "pub_igw_r" {
     route_table_id = aws_route_table.pub_rt.id
-    nat_gateway_id = aws_internet_gateway.igw.id
+    nat_gateway_id = aws_nat_gateway.nat_gtw.id
     destination_cidr_block = "0.0.0.0/0" 
   
 }

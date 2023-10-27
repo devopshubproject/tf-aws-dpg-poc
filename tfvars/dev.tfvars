@@ -19,12 +19,10 @@ availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
 
 # Load Balancer
 health_check_path = "/health"
-amis = {
-  us-west-2 = "ami-0123456789"
-}
-instance_type = "t2.nano"
+amis = "ami-0123456789"
+instance_type = "t2.micro"
 
 # Auto Scaling
-/* autoscale_min     = 1
+autoscale_min     = 1
 autoscale_max     = 2
-autoscale_desired = 1 */
+autoscale_desired = 1

@@ -7,6 +7,7 @@ output "pip" {
 }
 
 output "ssh_private_key_pem" {
+  sensitive = true
   value = tls_private_key.pvt_key.private_key_pem
 }
 

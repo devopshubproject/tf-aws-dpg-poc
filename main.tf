@@ -17,8 +17,8 @@ locals {
 
 resource "aws_launch_configuration" "ec2_launch" {
   name_prefix          = "poc-web-"
-  image_id             = "ami-12345678"
-  instance_type        = "t2.micro"
+  image_id             = var.ami
+  instance_type        = var.instance_type
   key_name             = tls_private_key.pvt_key.public_key_openssh
   security_groups      = [aws_security_group.sg.id]
   user_data            = filebase64("${path.module}/scripts/init.sh")
